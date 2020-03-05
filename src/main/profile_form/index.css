@@ -1,0 +1,97 @@
+#wrapper_profile_form {
+    width: 90%;
+    height: 90vh;
+    margin: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+      0 3px 5px -1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+  }
+
+#wrapper_profile_form_header {
+    width: 40%;
+    height: 100%;
+    background: url('../../images/bball_silhouette.png') no-repeat center/contain;
+}
+
+#wrapper_profile_form_main {
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 32px;
+    display: flex;
+    flex-flow: column;
+    overflow: auto;
+}
+
+#title_profile_form {
+  align-self: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: #0fe3ff;
+  font-family: 'BioRhyme', serif;
+  text-shadow: 2px 2px 4px #000000;
+  text-align: center;
+  line-height: 52px;
+  margin-bottom: 32px;
+  /* text-shadow: 1px 1px 2px black, 0 0 25px #0fb3ff, 0 0 5px rgb(1, 53, 165); */
+}
+
+#wrapper_header_form_profile_form {
+  margin-bottom: 32px;
+}
+
+#header_form_profile_form {
+  font-size: 18px;
+  font-family: 'Space Mono', monospace;
+  color: #333333;
+}
+
+#underline_decoration {
+  width: 28px;
+  height: 3px;
+  background-color: darkgray;
+}
+
+#form_profile_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_group {
+  width: 100%;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_field {
+  width: 43%;
+}
+
+.form_field_title {
+  font-size: 12px;
+  color: #0D98AF;
+  /* font-weight: bold; */
+  line-height: 14px;
+  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input__form_field {
+  border-bottom: 2px solid #95929497;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  /* margin-left: 8px; */
+  padding: 0px 0 12px;
+  /* text-indent: 16px; */
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+}
