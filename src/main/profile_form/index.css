@@ -1,30 +1,30 @@
 #wrapper_profile_form {
-    width: 90%;
-    height: 90vh;
-    margin: 16px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
-      0 3px 5px -1px rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-  }
+  width: 90%;
+  height: 90vh;
+  margin: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
 
 #wrapper_profile_form_header {
-    width: 40%;
-    height: 100%;
-    background: url('../../images/bball_silhouette.png') no-repeat center/contain;
+  width: 40%;
+  height: 100%;
+  background: url("../../images/bball_silhouette.png") no-repeat center/contain;
 }
 
 #wrapper_profile_form_main {
-    width: 60%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 32px;
-    display: flex;
-    flex-flow: column;
-    overflow: auto;
+  width: 60%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 32px;
+  display: flex;
+  flex-flow: column;
+  overflow: auto;
 }
 
 #title_profile_form {
@@ -32,7 +32,7 @@
   font-size: 48px;
   font-weight: 700;
   color: #0fe3ff;
-  font-family: 'BioRhyme', serif;
+  font-family: "BioRhyme", serif;
   text-shadow: 2px 2px 4px #000000;
   text-align: center;
   line-height: 52px;
@@ -46,7 +46,7 @@
 
 #header_form_profile_form {
   font-size: 18px;
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
   color: #333333;
 }
 
@@ -63,7 +63,7 @@
 
 .form_group {
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 48px;
   display: flex;
   justify-content: space-between;
 }
@@ -72,13 +72,17 @@
   width: 43%;
 }
 
+.form_field_full {
+  width: 100%;
+}
+
 .form_field_title {
   font-size: 12px;
-  color: #0D98AF;
+  color: #0d98af;
   /* font-weight: bold; */
   line-height: 14px;
   margin-bottom: 8px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .input__form_field {
@@ -92,6 +96,104 @@
   font-size: 1em;
   outline: none;
   width: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: transparent;
+}
+
+#wrapper_recent_photo_img {
+  /* height: 100px; */
+  cursor: pointer;
+}
+
+#img_recent_photo {
+  border-radius: 1px;
+  width: 100px;
+  height: 100px;
+  /* display: block; */
+  box-shadow: 2px 8px 20px #00000040;
+  background-color: white;
+  /* margin: 8px; */
+}
+
+#image_picker_recent_photo {
+  display: none;
+}
+
+.wrapper_throwback_photos {
+  display: flex;
+  width: 100%;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.wrapper_throwback_photo {
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  align-items: center;
+  width: 150px;
+  /* background-color: white; */
+  border-radius: 1px;
+  /* box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+  0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4); */
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.img_throwback_photo {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+  0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+}
+
+.btn_add_throwback {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+  0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+#image_picker_throwback_photo {
+  display: none;
+}
+
+#btn_submit_profile_form {
+  width: auto;
+  align-self: flex-end;
+  text-align: center;
+  background-color: #0d98af;
+  border: 1px solid transparent;
+  color: white;
+  padding: 10px 36px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 36px;
+  box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.textarea__throwback_photo_comment {
+  width: 100%;
+  /* display: block; */
+  margin-top: 4px;
+  border: 0.5px solid lightgray;
+  padding: 8px;
+  /* text-indent: 16px; */
+  box-sizing: border-box;
+  font-size: 10px;
+  line-height: 14px;
+  outline: none;
 }
