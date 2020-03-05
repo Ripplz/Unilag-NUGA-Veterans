@@ -141,6 +141,7 @@ const ProfileForm = () => {
           U<small>nilag</small> N<small>UGA</small> B<small>asketball</small> V
           <small>eterans</small>
         </div>
+        <div id="header_mobile_profile_form" />
         <div id="wrapper_header_form_profile_form">
           <div id="header_form_profile_form">Fill in your details below</div>
           <div id="underline_decoration" />

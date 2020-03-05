@@ -44,6 +44,15 @@
   margin-bottom: 32px;
 }
 
+#header_mobile_profile_form {
+  background: url('../../images/bball_fire.png') no-repeat center/contain;
+  align-self: center;
+  width: 100px;
+  min-height: 100px;
+  margin-bottom: 16px;
+  display: none;
+}
+
 #header_form_profile_form {
   font-size: 18px;
   font-family: "Space Mono", monospace;
@@ -145,7 +154,7 @@
   height: 150px;
   background-color: white;
   box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
-  0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
 }
 
 .btn_add_throwback {
@@ -157,7 +166,7 @@
   width: 150px;
   height: 150px;
   box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
-  0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
   background-color: white;
 }
 
@@ -196,4 +205,69 @@
   font-size: 10px;
   line-height: 14px;
   outline: none;
+}
+
+/*----------------------------
+------------------------------
+-------- MOBILE ONLY --------
+------------------------------
+----------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #wrapper_profile_form {
+    width: 95%;
+  }
+
+  #wrapper_profile_form_header {
+    display: none;
+  }
+
+  #wrapper_profile_form_main {
+    width: 100%;
+    padding: 20px;
+  }
+
+  #header_mobile_profile_form { 
+    display: initial;
+  }
+
+  #title_profile_form {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  #header_form_profile_form {
+    font-size: 16px;
+  }
+
+  #underline_decoration {
+    margin-top: 2px;
+  }
+
+  .form_group {
+    margin-bottom: 28px;
+  }
+
+  .form_field {
+    width: 47%;
+  }
+
+  .wrapper_throwback_photo {
+    width: 100px;
+  }
+
+  .img_throwback_photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .btn_add_throwback {
+    width: 100px;
+    height: 100px;
+  }
+
+  #btn_submit_profile_form {
+    padding: 8px 42px;
+  }
 }
