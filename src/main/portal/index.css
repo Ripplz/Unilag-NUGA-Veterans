@@ -1,43 +1,110 @@
 #wrapper_portal {
   width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  background-color: rgba(255, 255, 255, 0.7);
+  min-height: 90vh;
   display: flex;
-  flex-flow: column;
-  padding: 16px;
+  flex-direction: column;
+  padding: 0 16px;
 }
 
-#portal_title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0fe3ff;
-  font-family: "BioRhyme", serif;
-  text-shadow: 2px 2px 4px #000000;
-  line-height: 48px;
-  margin-bottom: 32px;
+#wrapper_portal_filter {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-#portal_title_decorated {
-    color: #333333;
-    font-size: 24px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 4px #333333;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-left: 8px;
+#form_portal_filter_query {
+  display: flex;
+  justify-content: flex-end;
 }
 
-#wrapper_veterans {
-    display: flex;
-    overflow: auto;
-    /* width: 100%; */
-    height: 100%;
+#input_portal_filter {
+  border: 0.5px solid lightgray;
+  border-radius: 2px;
+  margin-right: 8px;
+  padding: 4px 0;
+  text-indent: 8px;
+  font-size: 1em;
+  outline: none;
+  width: 49%;
+}
+
+#btn_portal_filter {
+  text-align: center;
+  background-color: #0f52ba;
+  border: 1px solid transparent;
+  color: white;
+  font-size: 1em;
+  border-radius: 2px;
+  padding: 4px 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+}
+
+#wrapper_veterans_list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 16px 0;
+  --wrapperWidth: calc(100vw - 32);
+  --numItems: calc(var(--wrapperWidth) * 0.0031779661);
+  --itemWidth: calc(var(--wrapperWidth) / var(--numItems));
 }
 
 .wrapper_veteran {
-    width: 250px;
-    display: flex;
-    padding: 16px;
-    background-color: white;
-    border-radius: 5px;
+  /* width: var(--itemWidth); */
+  display: flex;
+  /* flex: 1 1 auto; */
+  /* justify-content: space-between; */
+  padding: 16px;
+  background-color: #dddddd;
+  border-radius: 5px;
+  /* margin-right: 16px; */
+  margin-bottom: 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+}
+
+.wrapper_veteran:hover {
+  background-color: white;
+  box-shadow: 0 10px 16px 0 rgba(170, 48, 48, 0.14),
+  0 18px 27px 0 rgba(0, 0, 0, 0.12), 0 8px 11px -2px rgba(0, 0, 0, 0.4);
+  transform: translateY(2px) translateX(1px);
+}
+
+.wrapper_veteran_header {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.img_veteran_profile_pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  border: 1.5px solid #dddddd;
+}
+
+.title_veteran_name {
+  font-size: 18px;
+}
+
+.wrapper_veteran_details {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.wrapper_veteran_nuga_years {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.wrapper_veteran_jersey_positions {
+  font-size: 14px;
 }

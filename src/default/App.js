@@ -24,14 +24,12 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <div id="wrapper_main">
-          <div id="wrapper_main_top">
-            <Navbar activeNav={currentNav} onNavSelected={handleNavSelected} />
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/register" component={ProfileForm} />
-            <Route exact path="/portal" component={Portal} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/feedback" component={Feedback} />
-          </div>
+          <Navbar activeNav={currentNav} onNavSelected={handleNavSelected} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/register" component={ProfileForm} />
+          <Route exact path="/portal" component={Portal} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/feedback" component={Feedback} />
           <Footer />
         </div>
       </BrowserRouter>

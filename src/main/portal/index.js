@@ -7,12 +7,12 @@ import VeteranSummary from "./veteran_summary";
 
 const Portal = () => {
   const [veterans, setVeterans] = useState([]);
+  const [filterQuery, setFilterQuery] = useState("");
 
-  
   useEffect(() => {
     //   let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/get_veterans"
     let fetchUrl = "http://localhost:3005/get_veterans";
-    
+
     var submitToastId = toast.info("Loading Veterans...", { autoClose: false });
     fetch(fetchUrl, { method: "GET" })
       .then(response => response.json())
@@ -30,15 +30,28 @@ const Portal = () => {
       });
   }, []);
 
+  const filterPortalList = event => {
+    event.preventDefault();
+    setFilterQuery(document.getElementById("input_portal_filter").value);
+  };
+
   return (
     <div id="wrapper_portal">
-      <div id="portal_title">U<small>nilag</small> N<small>UGA</small> B<small>asketball</small> V
-          <small>eterans</small><span id="portal_title_decorated">portal</span></div>
-      <div id="wrapper_veterans">
+      <div id="wrapper_portal_filter">
+        <form id="form_portal_filter_query" onSubmit={filterPortalList}>
+          <input id="input_portal_filter" type="text" name="filterQuery" />
+          <button id="btn_portal_filter">Filter</button>
+        </form>
+      </div>
+      <div id="wrapper_veterans_list">
         {veterans &&
-          veterans.map((veteran, index) => (
-            <VeteranSummary key={index} data={veteran} />
-          ))}
+          veterans
+            .filter(val => {
+              return filterQuery ? val.nugaYears.includes(filterQuery) : val;
+            })
+            .map((veteran, index) => (
+              <VeteranSummary key={index} data={veteran} />
+            ))}
       </div>
     </div>
   );

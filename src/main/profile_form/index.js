@@ -28,13 +28,14 @@ const ProfileForm = () => {
       var submitToastId = toast.info("Submitting...", { autoClose: false });
       const rawPhoto = await convertFileToBase64(recentPhoto);
       const nugaYearsFormatted = nugaYears.split(",");
+      const jerseyPositionsFormatted = jerseyPositions.split(",");
       const newVeteran = {
         lastName,
         otherNames,
         email,
         phone,
         nugaYears: nugaYearsFormatted,
-        jerseyPositions,
+        jerseyPositions: jerseyPositionsFormatted,
         password,
         recentPhoto: rawPhoto,
         throwbackPhotos
