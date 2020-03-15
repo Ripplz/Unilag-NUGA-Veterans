@@ -9,6 +9,8 @@ const ProfileForm = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [lastName, setLastName] = useState("");
   const [otherNames, setOtherNames] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [nugaYears, setNugaYears] = useState("");
   const [jerseyPositions, setJerseyPositions] = useState("");
   const [password, setPassword] = useState("");
@@ -29,6 +31,8 @@ const ProfileForm = () => {
       const newVeteran = {
         lastName,
         otherNames,
+        email,
+        phone,
         nugaYears: nugaYearsFormatted,
         jerseyPositions,
         password,
@@ -36,8 +40,8 @@ const ProfileForm = () => {
         throwbackPhotos
       };
       console.log(newVeteran);
-      let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
-      // let fetchUrl = "http://localhost:3005/add_veteran";
+      // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
+      let fetchUrl = "http://localhost:3005/add_veteran";
       fetch(fetchUrl, {
         body: JSON.stringify(newVeteran),
         method: "POST",
@@ -62,6 +66,8 @@ const ProfileForm = () => {
   const resetForm = () => {
     setLastName("");
     setOtherNames("");
+    setEmail("");
+    setPhone("");
     setNugaYears("");
     setJerseyPositions("");
     setPassword("");
@@ -137,10 +143,7 @@ const ProfileForm = () => {
     <div id="wrapper_profile_form">
       <div id="wrapper_profile_form_header" />
       <div id="wrapper_profile_form_main">
-        <div id="title_profile_form">
-          U<small>nilag</small> N<small>UGA</small> B<small>asketball</small> V
-          <small>eterans</small>
-        </div>
+        <div id="title_profile_form">Register</div>
         <div id="header_mobile_profile_form" />
         <div id="wrapper_header_form_profile_form">
           <div id="header_form_profile_form">Fill in your details below</div>
@@ -168,6 +171,32 @@ const ProfileForm = () => {
                 name="otherNames"
                 value={otherNames}
                 onChange={event => setOtherNames(event.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form_group">
+            <div className="form_field">
+              <div className="form_field_title">Email Address</div>
+              <input
+                className="input__form_field"
+                type="email"
+                name="email"
+                value={email}
+                onChange={event => setEmail(event.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form_field">
+              <div className="form_field_title">Phone Number</div>
+              <input
+                className="input__form_field"
+                type="number"
+                name="phone"
+                value={phone}
+                onChange={event => setPhone(event.target.value)}
                 required
               />
             </div>

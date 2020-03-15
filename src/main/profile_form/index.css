@@ -1,40 +1,36 @@
 #wrapper_profile_form {
-  width: 90%;
-  height: 90vh;
-  margin: 16px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
-    0 3px 5px -1px rgba(0, 0, 0, 0.4);
+  height: 90%;
   display: flex;
-  align-items: center;
-  /* justify-content: center; */
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 16px;
 }
 
 #wrapper_profile_form_header {
-  width: 40%;
-  height: 100%;
+  width: 35%;
   background: url("../../images/bball_silhouette.png") no-repeat center/contain;
 }
 
 #wrapper_profile_form_main {
   width: 60%;
-  height: 100%;
-  box-sizing: border-box;
   padding: 32px;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   overflow: auto;
+  border-radius: 15px;
+  background-color: #dddddd;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.4);
 }
 
 #title_profile_form {
-  align-self: center;
-  font-size: 48px;
+  /* align-self: center; */
+  font-size: 28px;
   font-weight: 700;
-  color: #0fe3ff;
+  color: #0d98af;
   font-family: "BioRhyme", serif;
-  text-shadow: 2px 2px 4px #000000;
-  text-align: center;
+  text-shadow: 2px 2px 4px #dddddd;
   line-height: 52px;
   margin-bottom: 32px;
   /* text-shadow: 1px 1px 2px black, 0 0 25px #0fb3ff, 0 0 5px rgb(1, 53, 165); */
@@ -45,7 +41,7 @@
 }
 
 #header_mobile_profile_form {
-  background: url('../../images/bball_fire.png') no-repeat center/contain;
+  background: url("../../images/bball_fire.png") no-repeat center/contain;
   align-self: center;
   width: 100px;
   min-height: 100px;
@@ -227,7 +223,7 @@
     padding: 20px;
   }
 
-  #header_mobile_profile_form { 
+  #header_mobile_profile_form {
     display: initial;
   }
 

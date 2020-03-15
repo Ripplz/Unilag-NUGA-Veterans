@@ -1,0 +1,12 @@
+#wrapper_footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    background-color: black;
+}
+
+#footer_copyright_notice {
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
