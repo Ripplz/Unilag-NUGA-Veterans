@@ -16,8 +16,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: auto;
+  /* overflow: auto; */
   position: relative;
+  padding: 16px 0;
 }
 
 #img_veteran_profile_photo {
@@ -178,4 +179,40 @@
   box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
     0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+}
+
+/*----------------------------
+------------------------------
+-------- MOBILE ONLY --------
+------------------------------
+----------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #title_tbp {
+    font-size: 18px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  #wrapper_veteran_profile_throwback_photos {
+    margin: 0 16px;
+  }
+
+  .single_throwback_photo {
+    max-width: 35%;
+  }
+
+  #wrapper_profile_actions {
+    display: flex;
+    flex-direction: column;
+    right: 8px;
+  }
+
+  .btn_profile_action {
+    background-color: #0d97afa1;
+    padding: 2px 8px;
+    margin-right: initial;
+    margin-bottom: 8px;
+  }
 }
