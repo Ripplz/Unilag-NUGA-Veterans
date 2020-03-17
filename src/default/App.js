@@ -28,8 +28,17 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/register" component={ProfileForm} />
           <Route exact path="/portal" component={Portal} />
-          <Route exact path="/profile" component={Profile} />
+          <Route
+            exact
+            path="/profile"
+            render={props => <Profile {...props} isUser={true} />}
+          />
           <Route exact path="/feedback" component={Feedback} />
+          <Route
+            exact
+            path="/portal/veteran"
+            render={props => <Profile {...props} isUser={false} />}
+          />
           <Footer />
         </div>
       </BrowserRouter>

@@ -24,7 +24,7 @@ const Navbar = props => {
       <div id="wrapper_nav_items">
         {navRoutes.map((navItem, key) => (
           <Link
-            to={`${key == 0 ? "/" : navItem.toLowerCase()}`}
+            to={`${key == 0 ? "/" : "/" + navItem.toLowerCase()}`}
             className="wrapper_nav_item"
             id={`${props.activeNav == key ? "nav_item_selected" : ""}`}
             onClick={() => props.onNavSelected(key)}

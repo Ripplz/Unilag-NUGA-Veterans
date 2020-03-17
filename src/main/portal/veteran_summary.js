@@ -8,8 +8,7 @@ const VeteranSummary = props => {
   const history = useHistory();
 
   const openVeteranProfile = () => {
-    sessionStorage.setItem('veteranProfile', props.data._id);
-    history.push('/portal/veteran');
+    history.push('/portal/veteran', { data: props.data });
   };
 
   return (
