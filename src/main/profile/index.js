@@ -227,12 +227,14 @@ const Profile = props => {
           id="input_profile_login_email"
           type="email"
           name="email"
+          placeholder="Enter your email address..."
           required
         />
         <input
           id="input_profile_login_password"
           type="password"
           name="password"
+          placeholder="Enter your password..."
           required
         />
         <button id="btn_profile_login_submit" disabled={isLoginButtonDisabled}>

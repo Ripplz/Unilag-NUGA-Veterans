@@ -118,3 +118,64 @@
   color: white;
   text-align: center;
 }
+
+#wrapper_profile_login {
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form_profile_login {
+  width: 400px;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#input_profile_login_email {
+  border: 0.5px solid lightgray;
+  border-radius: 2px;
+  /* margin-left: 8px; */
+  padding: 4px 0;
+  text-indent: 16px;
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+#input_profile_login_password {
+  border: 0.5px solid lightgray;
+  border-radius: 2px;
+  /* margin-left: 8px; */
+  padding: 4px 0;
+  text-indent: 16px;
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+#btn_profile_login_submit {
+  align-self: flex-end;
+  text-align: center;
+  text-decoration: none;
+  background-color: #0d98af;
+  border: 1px solid transparent;
+  color: white;
+  padding: 4px 28px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px;
+  box-shadow: 0 6px 10px 0 rgba(170, 48, 48, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
