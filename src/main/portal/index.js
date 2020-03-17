@@ -39,7 +39,7 @@ const Portal = () => {
     <div id="wrapper_portal">
       <div id="wrapper_portal_filter">
         <form id="form_portal_filter_query" onSubmit={filterPortalList}>
-          <input id="input_portal_filter" type="text" name="filterQuery" />
+          <input id="input_portal_filter" type="text" name="filterQuery" placeholder="Enter NUGA Year..." />
           <button id="btn_portal_filter">Filter</button>
         </form>
       </div>

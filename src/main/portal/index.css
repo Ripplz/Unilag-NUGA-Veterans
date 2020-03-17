@@ -71,7 +71,7 @@
 .wrapper_veteran:hover {
   background-color: white;
   box-shadow: 0 10px 16px 0 rgba(170, 48, 48, 0.14),
-  0 18px 27px 0 rgba(0, 0, 0, 0.12), 0 8px 11px -2px rgba(0, 0, 0, 0.4);
+    0 18px 27px 0 rgba(0, 0, 0, 0.12), 0 8px 11px -2px rgba(0, 0, 0, 0.4);
   transform: translateY(2px) translateX(1px);
 }
 
@@ -107,4 +107,46 @@
 
 .wrapper_veteran_jersey_positions {
   font-size: 14px;
+}
+
+/*----------------------------
+------------------------------
+-------- MOBILE ONLY --------
+------------------------------
+----------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #wrapper_veterans_list {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-content: center;
+  }
+
+  .wrapper_veteran {
+    margin-right: initial;
+    margin-bottom: 16px;
+  }
+
+  .wrapper_veteran:hover {
+    transform: initial;
+  }
+
+  .img_veteran_profile_pic {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+  }
+
+  .title_veteran_name {
+    font-size: 16px;
+  }
+
+  .wrapper_veteran_nuga_years {
+    font-size: 12px;
+  }
+
+  .wrapper_veteran_jersey_positions {
+    font-size: 12px;
+  }
 }
