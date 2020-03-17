@@ -116,6 +116,10 @@
 ----------------------------*/
 
 @media only screen and (max-width: 480px) {
+  #wrapper_portal {
+    min-height: 60vh;
+  }
+
   #wrapper_veterans_list {
     display: flex;
     flex-flow: column nowrap;

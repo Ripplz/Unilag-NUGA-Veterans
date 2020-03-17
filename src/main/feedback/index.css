@@ -113,3 +113,30 @@
     0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
+
+/*----------------------------
+------------------------------
+-------- MOBILE ONLY --------
+------------------------------
+----------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #wrapper_feedback {
+    height: 60vh;
+  }
+
+  #wrapper_feedback_main {
+    width: 90%;
+    height: 90%;
+  }
+
+  #form_feedback {
+    width: 95%;
+    height: 100%;
+  }
+
+  #textarea__feedback {
+    font-size: 1.2em;
+    height: 70%;
+  }
+}
