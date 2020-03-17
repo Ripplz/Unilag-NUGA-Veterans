@@ -27,6 +27,11 @@ function App() {
           <Navbar activeNav={currentNav} onNavSelected={handleNavSelected} />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/register" component={ProfileForm} />
+          <Route
+            exact
+            path="/edit-profile"
+            render={props => <ProfileForm {...props} isEditMode={true} />}
+          />
           <Route exact path="/portal" component={Portal} />
           <Route
             exact

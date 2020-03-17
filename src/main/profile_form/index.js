@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import default_profile_pic from "../../images/default_profile_pic.png";
 import icon_add_throwback_photo from "../../images/add.svg";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import { useHistory } from "react-router-dom";
 
-const ProfileForm = () => {
+const ProfileForm = props => {
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [lastName, setLastName] = useState("");
   const [otherNames, setOtherNames] = useState("");
   const [email, setEmail] = useState("");
@@ -16,20 +18,122 @@ const ProfileForm = () => {
   const [password, setPassword] = useState("");
   const [recentPhoto, setRecentPhoto] = useState(null);
   const [throwbackPhotos, setThrowbackPhotos] = useState([]);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [initProfile, setInitProfile] = useState(null);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (props.isEditMode && props.history.location.state) {
+      setIsEditMode(true);
+      const data = props.history.location.state.data;
+      if (data) {
+        console.log(data);
+        data.nugaYears = data.nugaYears.toString();
+        data.jerseyPositions = data.jerseyPositions.toString();
+
+        setInitProfile(data);
+        setLastName(data.lastName);
+        setOtherNames(data.otherNames);
+        setEmail(data.email);
+        setPhone(data.phone);
+        setNugaYears(data.nugaYears);
+        setJerseyPositions(data.jerseyPositions);
+        setPassword(data.password);
+        setRecentPhoto(data.recentPhoto);
+        setThrowbackPhotos(data.throwbackPhotos);
+        document.getElementById("img_recent_photo").src = data.recentPhoto;
+      }
+    }
+  }, []);
+
+  const isProfileEdited = () => {
+    if (!initProfile) return false;
+    return (
+      initProfile.lastName === lastName &&
+      initProfile.otherNames === otherNames &&
+      initProfile.email === email &&
+      initProfile.password === password &&
+      initProfile.phone === phone &&
+      initProfile.nugaYears === nugaYears &&
+      initProfile.jerseyPositions === jerseyPositions &&
+      initProfile.recentPhoto === recentPhoto &&
+      initProfile.throwbackPhotos === throwbackPhotos
+    );
+  };
 
   const submit = async event => {
     event.preventDefault();
+    console.log(nugaYears);
 
     if (recentPhoto === null) {
       toast.warn("Please upload a profile picture");
       return;
-    } else if (window.confirm("Are you sure you want to submit?")) {
-      setIsDisabled(true);
-      var submitToastId = toast.info("Submitting...", { autoClose: false });
-      const rawPhoto = await convertFileToBase64(recentPhoto);
+    } else {
+      if (isEditMode) {
+        if (initProfile.password !== password) {
+          const currentPassword = window.prompt(
+            "Please enter your current password to continue"
+          );
+          if (currentPassword === initProfile.password) updateProfile();
+          else {
+            alert("The password you entered isn't correct. Please try again");
+            return;
+          }
+        } else updateProfile();
+      } else {
+        if (window.confirm("Are you sure you want to submit?")) {
+          setIsDisabled(true);
+          var submitToastId = toast.info("Submitting...", { autoClose: false });
+          const nugaYearsFormatted = nugaYears.split(",");
+          const jerseyPositionsFormatted = jerseyPositions.split(",");
+          const newVeteran = {
+            lastName,
+            otherNames,
+            email,
+            phone,
+            nugaYears: nugaYearsFormatted,
+            jerseyPositions: jerseyPositionsFormatted,
+            password,
+            recentPhoto,
+            throwbackPhotos
+          };
+          console.log(newVeteran);
+          // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
+          let fetchUrl = "http://localhost:3005/add_veteran";
+          fetch(fetchUrl, {
+            body: JSON.stringify(newVeteran),
+            method: "POST",
+            headers: {
+              "content-type": "application/json"
+            }
+          })
+            .then(response => response.json())
+            .then(data => {
+              toast.dismiss(submitToastId);
+              toast.success("Your data has been successfully submitted.");
+              resetForm();
+              setIsDisabled(false);
+            })
+            .catch(err => {
+              console.error(err);
+              setIsDisabled(false);
+            });
+        }
+      }
+    }
+  };
+
+  const updateProfile = () => {
+    if (window.confirm("Are you sure you want to update your profile?")) {
+      setIsUpdating(true);
+      var submitToastId = toast.info("Updating profile...", {
+        autoClose: false
+      });
       const nugaYearsFormatted = nugaYears.split(",");
       const jerseyPositionsFormatted = jerseyPositions.split(",");
-      const newVeteran = {
+      const updatedVeteran = {
+        _id: initProfile._id,
         lastName,
         otherNames,
         email,
@@ -37,14 +141,14 @@ const ProfileForm = () => {
         nugaYears: nugaYearsFormatted,
         jerseyPositions: jerseyPositionsFormatted,
         password,
-        recentPhoto: rawPhoto,
+        recentPhoto,
         throwbackPhotos
       };
-      console.log(newVeteran);
-      // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
-      let fetchUrl = "http://localhost:3005/add_veteran";
+      console.log(updatedVeteran);
+      // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/update_veteran";
+      let fetchUrl = "http://localhost:3005/update_veteran";
       fetch(fetchUrl, {
-        body: JSON.stringify(newVeteran),
+        body: JSON.stringify(updatedVeteran),
         method: "POST",
         headers: {
           "content-type": "application/json"
@@ -52,14 +156,19 @@ const ProfileForm = () => {
       })
         .then(response => response.json())
         .then(data => {
+          console.log(data);
           toast.dismiss(submitToastId);
-          toast.success("Your data has been successfully submitted.");
-          resetForm();
-          setIsDisabled(false);
+          toast.success("Profile updated successfully.");
+          setIsUpdating(false);
+          sessionStorage.setItem(
+            updatedVeteran._id,
+            JSON.stringify(updatedVeteran)
+          );
+          history.push("/profile");
         })
         .catch(err => {
           console.error(err);
-          setIsDisabled(false);
+          setIsUpdating(false);
         });
     }
   };
@@ -74,21 +183,19 @@ const ProfileForm = () => {
     setPassword("");
     setRecentPhoto(null);
     setThrowbackPhotos([]);
-    document.getElementById("img_recent_photo").src = default_profile_pic;
   };
 
   const launchRecentPhotoPicker = () => {
     document.getElementById("image_picker_recent_photo").click();
   };
 
-  const updateRecentPhoto = () => {
+  const updateRecentPhoto = async () => {
     const imagePicker = document.getElementById("image_picker_recent_photo");
     const files = imagePicker.files;
     if (files.length !== 0) {
       const newImage = files[0];
-      const profilePic = document.getElementById("img_recent_photo");
-      profilePic.src = URL.createObjectURL(newImage);
-      setRecentPhoto(newImage);
+      const newRecentPhoto = await convertFileToBase64(newImage);
+      setRecentPhoto(newRecentPhoto);
     }
   };
 
@@ -118,6 +225,12 @@ const ProfileForm = () => {
     setThrowbackPhotos(allThrowbacks);
   };
 
+  const removeThrowbackPhoto = index => {
+    let allThrowbacks = [...throwbackPhotos];
+    allThrowbacks.splice(index, 1);
+    setThrowbackPhotos(allThrowbacks);
+  };
+
   const convertFileToBase64 = file => {
     return new Promise((resolve, reject) => {
       let reader = new FileReader();
@@ -144,12 +257,16 @@ const ProfileForm = () => {
     <div id="wrapper_profile_form">
       <div id="wrapper_profile_form_header" />
       <div id="wrapper_profile_form_main">
-        <div id="title_profile_form">Register</div>
-        <div id="header_mobile_profile_form" />
-        <div id="wrapper_header_form_profile_form">
-          <div id="header_form_profile_form">Fill in your details below</div>
-          <div id="underline_decoration" />
+        <div id="title_profile_form">
+          {isEditMode ? "Edit Profile" : "Register"}
         </div>
+        <div id="header_mobile_profile_form" />
+        {!isEditMode && (
+          <div id="wrapper_header_form_profile_form">
+            <div id="header_form_profile_form">Fill in your details below</div>
+            <div id="underline_decoration" />
+          </div>
+        )}
         <form id="form_profile_form" onSubmit={submit}>
           <div className="form_group">
             <div className="form_field">
@@ -241,7 +358,7 @@ const ProfileForm = () => {
                   id="img_recent_photo"
                   onClick={launchRecentPhotoPicker}
                   alt=""
-                  src={default_profile_pic}
+                  src={recentPhoto ? recentPhoto : default_profile_pic}
                 />
                 <input
                   type="file"
@@ -271,6 +388,10 @@ const ProfileForm = () => {
               <div className="wrapper_throwback_photos">
                 {throwbackPhotos.map((throwbackObject, index) => (
                   <div className="wrapper_throwback_photo" key={index}>
+                    <span
+                      className="btn_remove_throwback_photo"
+                      onClick={() => removeThrowbackPhoto(index)}
+                    />
                     <img
                       alt=""
                       src={throwbackObject.throwbackPhoto}
@@ -304,8 +425,11 @@ const ProfileForm = () => {
             </div>
           </div>
 
-          <button id="btn_submit_profile_form" disabled={isDisabled}>
-            Submit
+          <button
+            id="btn_submit_profile_form"
+            disabled={isEditMode ? isProfileEdited() || isUpdating : isDisabled}
+          >
+            {isEditMode ? "Update" : "Submit"}
           </button>
         </form>
       </div>

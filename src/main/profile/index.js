@@ -3,6 +3,7 @@ import "./index.css";
 import default_profile_pic from "../../images/default_profile_pic.png";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const Profile = props => {
   const [galleryTbPhotos, setGalleryTbPhotos] = useState([]);
@@ -14,6 +15,8 @@ const Profile = props => {
     "Data not found. Please reload"
   );
   const [shouldLoginConfirmed, setShouldLoginConfirmed] = useState(false);
+  
+  const history = useHistory();
 
   const resolveGalleryTbPhotos = source => {
     const newPhotos = source.throwbackPhotos.map(val => ({
@@ -94,6 +97,14 @@ const Profile = props => {
       });
   };
 
+  const launchEditProfile = () => {
+    history.push('/edit-profile', { data: validVet });
+  };
+
+  const startDeleteProfile = () => {
+    alert("You dey there");
+  };
+
   const validContent = validVet ? (
     <div id="wrapper_veteran_profile">
       <img
@@ -101,6 +112,24 @@ const Profile = props => {
         alt=""
         src={validVet.recentPhoto ? validVet.recentPhoto : default_profile_pic}
       />
+      {props.isUser && (
+        <div id="wrapper_profile_actions">
+          <button
+            id="btn_edit_profile"
+            className="btn_profile_action"
+            onClick={launchEditProfile}
+          >
+            Edit
+          </button>
+          <button
+            className="btn_profile_action"
+            id="btn_delete_profile"
+            onClick={startDeleteProfile}
+          >
+            Delete
+          </button>
+        </div>
+      )}
       <div id="wrapper_veteran_profile_name">{`${validVet.lastName} ${validVet.otherNames}`}</div>
       {props.isUser && (
         <div id="wrapper_veteran_profile_email">{validVet.email}</div>
