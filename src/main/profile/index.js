@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 const Profile = props => {
   const [galleryTbPhotos, setGalleryTbPhotos] = useState([]);
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
+  const [isDeleteDisabled, setIsDeleteDisabled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [validVet, setValidVet] = useState(null);
@@ -15,7 +16,7 @@ const Profile = props => {
     "Data not found. Please reload"
   );
   const [shouldLoginConfirmed, setShouldLoginConfirmed] = useState(false);
-  
+
   const history = useHistory();
 
   const resolveGalleryTbPhotos = source => {
@@ -89,6 +90,7 @@ const Profile = props => {
           resolveGalleryTbPhotos(data);
           setValidVet(data);
         } else toast.warn("Could not login. Please try again.");
+        setIsLoginButtonDisabled(false);
       })
       .catch(err => {
         console.error(err);
@@ -98,11 +100,52 @@ const Profile = props => {
   };
 
   const launchEditProfile = () => {
-    history.push('/edit-profile', { data: validVet });
+    history.push("/edit-profile", { data: validVet });
   };
 
   const startDeleteProfile = () => {
-    alert("You dey there");
+    if (
+      window.confirm(
+        "Are you sure you want to delete your veteran profile? This action cannot be undone"
+      )
+    ) {
+      const currentPassword = window.prompt(
+        "Please enter your password to continue"
+      );
+      if (currentPassword === validVet.password) {
+        setIsDeleteDisabled(true);
+        var submitToastId = toast.info("Deleting profile...", {
+          autoClose: false
+        });
+        let fetchUrl = "http://localhost:3005/delete_veteran";
+        fetch(fetchUrl, {
+          body: JSON.stringify({
+            _id: validVet._id,
+            password: validVet.password
+          }),
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            toast.dismiss(submitToastId);
+            toast.success("Profile successfully deleted");
+            sessionStorage.removeItem("userId");
+            sessionStorage.removeItem(validVet._id);
+            setIsDeleteDisabled(false);
+            history.push("/");
+          })
+          .catch(err => {
+            console.error(err);
+            setIsDeleteDisabled(false);
+          });
+      } else {
+        alert("The password you entered isn't correct. Please try again");
+        return;
+      }
+    }
   };
 
   const validContent = validVet ? (
@@ -125,6 +168,7 @@ const Profile = props => {
             className="btn_profile_action"
             id="btn_delete_profile"
             onClick={startDeleteProfile}
+            disabled={isDeleteDisabled}
           >
             Delete
           </button>
