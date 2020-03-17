@@ -72,8 +72,12 @@
 }
 
 @keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
 
 .wrapper_landing_page_feature {
@@ -90,58 +94,133 @@
   align-items: center;
   height: 100%;
   width: 20%;
-  animation: mover 2s infinite  alternate;
+  animation: mover 2s infinite alternate;
 }
 
 .wrapper_landing_page_feature:hover {
-    background-color: white;
-    box-shadow: 0 10px 16px 0 rgba(170, 48, 48, 0.14),
+  background-color: white;
+  box-shadow: 0 10px 16px 0 rgba(170, 48, 48, 0.14),
     0 18px 27px 0 rgba(0, 0, 0, 0.12), 0 8px 11px -2px rgba(0, 0, 0, 0.4);
-    transform: translateY(-2px) translateX(1px);
+  transform: translateY(-2px) translateX(1px);
 }
 
 #wrapper_landing_page_features a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .landing_page_feature_img {
-    margin-bottom: 12px;
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  margin-bottom: 12px;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .landing_page_feature_title {
-    text-align: center;
-    color: #0D98AF;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
-    margin-block-end: 8px;
+  text-align: center;
+  color: #0d98af;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 8px;
 }
 
 .landing_page_feature_text {
-    text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    color: #333333;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  color: #333333;
 }
 
 #landing_page_feature_img_register {
-    background-image: url('../../images/registration.png');
+  background-image: url("../../images/registration.png");
 }
 
 #landing_page_feature_img_portal {
-    background-image: url('../../images/portal.png');
+  background-image: url("../../images/portal.png");
 }
 
 #landing_page_feature_img_profile {
-    background-image: url('../../images/profile.png');
+  background-image: url("../../images/profile.png");
 }
 
 #landing_page_feature_img_feedback {
-    background-image: url('../../images/feedback.png');
+  background-image: url("../../images/feedback.png");
 }
 
+/*----------------------------
+------------------------------
+-------- MOBILE ONLY --------
+------------------------------
+----------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #wrapper_landing_page_main {
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    max-height: none;
+    margin-bottom: 32px;
+  }
+
+  #img_landing_page_header {
+    width: 100%;
+    height: 280px;
+  }
+
+  #landing_page_header {
+    width: 90%;
+  }
+
+  #landing_page_header_title {
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  #landing_page_header_cta_title {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  #btn_landing_page_header_cta {
+    padding: 8px 24px;
+    align-self: center;
+  }
+
+  #wrapper_landing_page_features {
+    flex-direction: column;
+    justify-content: initial;
+    width: 90%;
+    align-self: center;
+  }
+
+  .wrapper_landing_page_feature {
+    padding: 12px;
+    width: 100%;
+    animation: none;
+    margin-bottom: 16px;
+  }
+
+  .wrapper_landing_page_feature:hover {
+    transform: none;
+  }
+
+  #wrapper_landing_page_features a {
+    text-decoration: none;
+  }
+
+  .landing_page_feature_img {
+    margin-bottom: 8px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .landing_page_feature_title {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+}

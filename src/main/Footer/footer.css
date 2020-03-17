@@ -1,12 +1,24 @@
 #wrapper_footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 24px;
-    background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  background-color: black;
 }
 
 #footer_copyright_notice {
-    color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+/*----------------------------
+------------------------------
+-------- MOBILE ONLY --------
+------------------------------
+----------------------------*/
+
+@media only screen and (max-width: 480px) {
+  #wrapper_footer {
+    padding: 12px;
+  }
 }
