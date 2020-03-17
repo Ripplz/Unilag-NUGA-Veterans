@@ -10,8 +10,8 @@ const Portal = () => {
   const [filterQuery, setFilterQuery] = useState("");
 
   useEffect(() => {
-    //   let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/get_veterans"
-    let fetchUrl = "http://localhost:3005/get_veterans";
+      let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/get_veterans"
+    // let fetchUrl = "http://localhost:3005/get_veterans";
 
     var submitToastId = toast.info("Loading Veterans...", { autoClose: false });
     fetch(fetchUrl, { method: "GET" })

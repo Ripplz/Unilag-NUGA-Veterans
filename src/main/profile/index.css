@@ -188,6 +188,13 @@
 ----------------------------*/
 
 @media only screen and (max-width: 480px) {
+  #wrapper_profile {
+    height: calc(100vh - 214px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   #title_tbp {
     font-size: 18px;
     margin-bottom: 8px;
@@ -214,5 +221,10 @@
     padding: 2px 8px;
     margin-right: initial;
     margin-bottom: 8px;
+  }
+
+  #wrapper_profile_login {
+    width: 90%;
+    height: 100%;
   }
 }

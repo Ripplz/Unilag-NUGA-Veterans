@@ -99,8 +99,8 @@ const ProfileForm = props => {
             throwbackPhotos
           };
           console.log(newVeteran);
-          // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
-          let fetchUrl = "http://localhost:3005/add_veteran";
+          let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
+          // let fetchUrl = "http://localhost:3005/add_veteran";
           fetch(fetchUrl, {
             body: JSON.stringify(newVeteran),
             method: "POST",
@@ -145,8 +145,8 @@ const ProfileForm = props => {
         throwbackPhotos
       };
       console.log(updatedVeteran);
-      // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/update_veteran";
-      let fetchUrl = "http://localhost:3005/update_veteran";
+      let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/update_veteran";
+      // let fetchUrl = "http://localhost:3005/update_veteran";
       fetch(fetchUrl, {
         body: JSON.stringify(updatedVeteran),
         method: "POST",

@@ -21,8 +21,8 @@ const Feedback = props => {
     const email = document.getElementById("input_feedback_login_email").value;
     const password = document.getElementById("input_feedback_login_password")
       .value;
-    // let fetchUrl = `https://unilag-nuga-veterans-server.now.sh/get_veteran_id?email=${email}&password=${password}`;
-    let fetchUrl = `http://localhost:3005/get_veteran_id?email=${email}&password=${password}`;
+    let fetchUrl = `https://unilag-nuga-veterans-server.now.sh/get_veteran_id?email=${email}&password=${password}`;
+    // let fetchUrl = `http://localhost:3005/get_veteran_id?email=${email}&password=${password}`;
     fetch(fetchUrl, { method: "GET" })
       .then(response => response.json())
       .then(vetData => {
@@ -52,8 +52,8 @@ const Feedback = props => {
       userId
     };
     console.log(newFeedback);
-    // let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/submit_feedback";
-    let fetchUrl = "http://localhost:3005/submit_feedback";
+    let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/submit_feedback";
+    // let fetchUrl = "http://localhost:3005/submit_feedback";
     fetch(fetchUrl, {
       body: JSON.stringify(newFeedback),
       method: "POST",
