@@ -8,7 +8,7 @@ import swal from "sweetalert";
 import Portal from "../main/portal";
 import Navbar from "../main/Navbar/navbar";
 import LandingPage from "../main/landing_page";
-import Profile from "../main/profile";
+import Account from "../main/profile";
 import Feedback from "../main/feedback";
 import Footer from "../main/Footer/footer";
 
@@ -35,14 +35,14 @@ function App() {
           <Route exact path="/portal" component={Portal} />
           <Route
             exact
-            path="/profile"
-            render={props => <Profile {...props} isUser={true} />}
+            path="/account"
+            render={props => <Account {...props} isUser={true} />}
           />
           <Route exact path="/feedback" component={Feedback} />
           <Route
             exact
             path="/portal/veteran"
-            render={props => <Profile {...props} isUser={false} />}
+            render={props => <Account {...props} isUser={false} />}
           />
           <Footer />
         </div>

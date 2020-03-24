@@ -5,7 +5,7 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 
-const Profile = props => {
+const Account = props => {
   const [galleryTbPhotos, setGalleryTbPhotos] = useState([]);
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
   const [isDeleteDisabled, setIsDeleteDisabled] = useState(false);
@@ -256,4 +256,4 @@ const Profile = props => {
   return <div id="wrapper_profile">{content}</div>;
 };
 
-export default Profile;
+export default Account;

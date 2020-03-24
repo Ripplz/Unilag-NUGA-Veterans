@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 const Navbar = props => {
-  const navRoutes = ["Home", "Register", "Portal", "Profile", "Feedback"];
+  const navRoutes = ["Home", "Register", "Portal", "Account", "Feedback"];
 
   const showInfo = () => {
     swal({
