@@ -30,8 +30,7 @@ const ProfileForm = props => {
       if (data) {
         console.log(data);
         data.nugaYears = data.nugaYears.toString();
-        data.jerseyPositions = data.jerseyPositions.toString();
-
+        
         setInitProfile(data);
         setLastName(data.lastName);
         setOtherNames(data.otherNames);
@@ -86,20 +85,20 @@ const ProfileForm = props => {
           setIsDisabled(true);
           var submitToastId = toast.info("Submitting...", { autoClose: false });
           const nugaYearsFormatted = nugaYears.split(",");
-          const jerseyPositionsFormatted = jerseyPositions.split(",");
           const newVeteran = {
             lastName,
             otherNames,
             email,
             phone,
             nugaYears: nugaYearsFormatted,
-            jerseyPositions: jerseyPositionsFormatted,
+            jerseyPositions,
             password,
             recentPhoto,
             throwbackPhotos
           };
           console.log(newVeteran);
-          let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/add_veteran";
+          let fetchUrl =
+            "https://unilag-nuga-veterans-server.now.sh/add_veteran";
           // let fetchUrl = "http://localhost:3005/add_veteran";
           fetch(fetchUrl, {
             body: JSON.stringify(newVeteran),
@@ -131,7 +130,6 @@ const ProfileForm = props => {
         autoClose: false
       });
       const nugaYearsFormatted = nugaYears.split(",");
-      const jerseyPositionsFormatted = jerseyPositions.split(",");
       const updatedVeteran = {
         _id: initProfile._id,
         lastName,
@@ -139,13 +137,14 @@ const ProfileForm = props => {
         email,
         phone,
         nugaYears: nugaYearsFormatted,
-        jerseyPositions: jerseyPositionsFormatted,
+        jerseyPositions,
         password,
         recentPhoto,
         throwbackPhotos
       };
       console.log(updatedVeteran);
-      let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/update_veteran";
+      let fetchUrl =
+        "https://unilag-nuga-veterans-server.now.sh/update_veteran";
       // let fetchUrl = "http://localhost:3005/update_veteran";
       fetch(fetchUrl, {
         body: JSON.stringify(updatedVeteran),
@@ -336,9 +335,7 @@ const ProfileForm = props => {
             </div>
 
             <div className="form_field">
-              <div className="form_field_title">
-                Jersey No./Position (Separate each with a comma)
-              </div>
+              <div className="form_field_title">Jersey No./Position</div>
               <input
                 className="input__form_field"
                 type="text"
