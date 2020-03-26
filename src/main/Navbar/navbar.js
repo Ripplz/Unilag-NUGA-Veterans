@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 const Navbar = props => {
-  const navRoutes = ["Home", "Register", "Portal", "Account", "Feedback"];
+  const navRoutes = ["Home", "Register", "Account", "Feedback", "Contact"];
 
   const showInfo = () => {
     swal({
       title: "About this app",
       text:
-        "This app was created to collate and manage information about veteran players in Unilag's NUGA Basketball team.\n\n\n\nProject Manager: Dr. Ayo\n\nSoftware Developer: Stephen Ojo",
+        "This app was created to collate and manage information about veteran players in Unilag's NUGA Basketball team.\n\n\nConceptual Design: Dr. Daniel Ayo (danielayo@gmail.com)\n\nSoftware Development: Stephen Ojo (ojostephendev@gmail.com)",
       icon: "info",
       button: "OK"
     });
