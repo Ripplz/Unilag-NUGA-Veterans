@@ -18,6 +18,9 @@ const Feedback = props => {
   const loginFeedback = event => {
     event.preventDefault();
     setIsLoginButtonDisabled(true);
+    var loginToastId = toast.info("Logging in...", {
+      autoClose: false
+    });
     const email = document.getElementById("input_feedback_login_email").value;
     const password = document.getElementById("input_feedback_login_password")
       .value;
@@ -38,7 +41,8 @@ const Feedback = props => {
         console.error(err);
         toast.error("An error occured. Please try again.");
         setIsLoginButtonDisabled(false);
-      });
+      })
+      .finally(() => toast.dismiss(loginToastId));
   };
 
   const submitFeedback = event => {

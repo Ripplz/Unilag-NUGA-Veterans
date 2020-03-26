@@ -74,6 +74,9 @@ const Account = props => {
   const loginProfile = event => {
     event.preventDefault();
     setIsLoginButtonDisabled(true);
+    var loginToastId = toast.info("Logging in...", {
+      autoClose: false
+    });
     const email = document.getElementById("input_profile_login_email").value;
     const password = document.getElementById("input_profile_login_password")
       .value;
@@ -96,7 +99,8 @@ const Account = props => {
         console.error(err);
         toast.error("An error occured. Please try again.");
         setIsLoginButtonDisabled(false);
-      });
+      })
+      .finally(() => toast.dismiss(loginToastId));
   };
 
   const launchEditProfile = () => {
@@ -118,7 +122,8 @@ const Account = props => {
           autoClose: false
         });
         // let fetchUrl = "http://localhost:3005/delete_veteran";
-        let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/delete_veteran";
+        let fetchUrl =
+          "https://unilag-nuga-veterans-server.now.sh/delete_veteran";
         fetch(fetchUrl, {
           body: JSON.stringify({
             _id: validVet._id,
