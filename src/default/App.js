@@ -11,6 +11,7 @@ import LandingPage from "../main/landing_page";
 import Account from "../main/profile";
 import Feedback from "../main/feedback";
 import Footer from "../main/Footer/footer";
+import Contact from "../main/contact";
 
 function App() {
   const [currentNav, setCurrentNav] = useState(0);
@@ -39,6 +40,7 @@ function App() {
             render={props => <Account {...props} isUser={true} />}
           />
           <Route exact path="/feedback" component={Feedback} />
+          <Route exact path="/contact" component={Contact} />
           <Route
             exact
             path="/portal/veteran"
