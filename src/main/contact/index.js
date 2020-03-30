@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [contactMessage, setContactMessage] = useState("");
@@ -10,6 +11,49 @@ const Contact = () => {
 
   const submitContact = event => {
     event.preventDefault();
+    setIsSubmitDisabled(true);
+    var submitToastId = toast.info("Submitting...", {
+      autoClose: false
+    });
+    const newContactMessage = {
+      message: contactMessage,
+      name,
+      email,
+      phone
+    };
+    console.log(newContactMessage);
+    // let fetchUrl =
+    // "https://unilag-nuga-veterans-server.now.sh/submit_contact_message";
+    let fetchUrl = "http://localhost:3005/submit_contact_message";
+    fetch(fetchUrl, {
+      body: JSON.stringify(newContactMessage),
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        toast.success(
+          "Your message has been successfully submitted. Thank you!"
+        );
+        resetComponent();
+        setIsSubmitDisabled(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setIsSubmitDisabled(false);
+      })
+      .finally(() => {
+        toast.dismiss(submitToastId);
+      });
+  };
+
+  const resetComponent = () => {
+    setContactMessage("");
+    setName("");
+    setEmail("");
+    setPhone("");
   };
 
   return (
