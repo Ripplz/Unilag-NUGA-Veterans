@@ -120,10 +120,6 @@
 ----------------------------*/
 
 @media only screen and (max-width: 480px) {
-  #wrapper_feedback {
-    height: calc(100vh - 214px);
-  }
-
   #wrapper_feedback_main {
     width: 90%;
     height: 90%;
