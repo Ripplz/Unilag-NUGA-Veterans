@@ -158,7 +158,7 @@ const Account = props => {
     <div id="wrapper_veteran_profile">
       <img
         id="img_veteran_profile_photo"
-        alt=""
+        alt="profile photo"
         src={validVet.recentPhoto ? validVet.recentPhoto : default_profile_pic}
       />
       {props.isUser && (
