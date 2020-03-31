@@ -30,7 +30,7 @@ const ProfileForm = props => {
       if (data) {
         console.log(data);
         data.nugaYears = data.nugaYears.toString();
-        
+
         setInitProfile(data);
         setLastName(data.lastName);
         setOtherNames(data.otherNames);
@@ -97,9 +97,7 @@ const ProfileForm = props => {
             throwbackPhotos
           };
           console.log(newVeteran);
-          let fetchUrl =
-            "https://unilag-nuga-veterans-server.now.sh/add_veteran";
-          // let fetchUrl = "http://localhost:3005/add_veteran";
+          let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/add_veteran`;
           fetch(fetchUrl, {
             body: JSON.stringify(newVeteran),
             method: "POST",
@@ -143,9 +141,7 @@ const ProfileForm = props => {
         throwbackPhotos
       };
       console.log(updatedVeteran);
-      let fetchUrl =
-        "https://unilag-nuga-veterans-server.now.sh/update_veteran";
-      // let fetchUrl = "http://localhost:3005/update_veteran";
+      let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/update_veteran`;
       fetch(fetchUrl, {
         body: JSON.stringify(updatedVeteran),
         method: "POST",
@@ -163,7 +159,7 @@ const ProfileForm = props => {
             updatedVeteran._id,
             JSON.stringify(updatedVeteran)
           );
-          history.push("/profile");
+          history.push("/account");
         })
         .catch(err => {
           console.error(err);

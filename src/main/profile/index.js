@@ -45,8 +45,7 @@ const Account = props => {
           resolveGalleryTbPhotos(data);
           setValidVet(data);
         } else {
-          let fetchUrl = `https://unilag-nuga-veterans-server.now.sh/get_veteran_by_id?vetId=${userId}`;
-          // let fetchUrl = `http://localhost:3005/get_veteran_by_id?vetId=${userId}`;
+          let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/get_veteran_by_id?vetId=${userId}`;
           fetch(fetchUrl, { method: "GET" })
             .then(response => response.json())
             .then(vetData => {
@@ -80,8 +79,7 @@ const Account = props => {
     const email = document.getElementById("input_profile_login_email").value;
     const password = document.getElementById("input_profile_login_password")
       .value;
-    let fetchUrl = `https://unilag-nuga-veterans-server.now.sh/get_veteran?email=${email}&password=${password}`;
-    // let fetchUrl = `http://localhost:3005/get_veteran?email=${email}&password=${password}`;
+    let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/get_veteran?email=${email}&password=${password}`;
     fetch(fetchUrl, { method: "GET" })
       .then(response => response.json())
       .then(vetData => {
@@ -121,9 +119,7 @@ const Account = props => {
         var submitToastId = toast.info("Deleting profile...", {
           autoClose: false
         });
-        // let fetchUrl = "http://localhost:3005/delete_veteran";
-        let fetchUrl =
-          "https://unilag-nuga-veterans-server.now.sh/delete_veteran";
+        let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/delete_veteran`;
         fetch(fetchUrl, {
           body: JSON.stringify({
             _id: validVet._id,

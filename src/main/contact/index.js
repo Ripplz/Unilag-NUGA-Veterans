@@ -22,9 +22,7 @@ const Contact = () => {
       phone
     };
     console.log(newContactMessage);
-    // let fetchUrl =
-    // "https://unilag-nuga-veterans-server.now.sh/submit_contact_message";
-    let fetchUrl = "http://localhost:3005/submit_contact_message";
+    let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/submit_contact_message`;
     fetch(fetchUrl, {
       body: JSON.stringify(newContactMessage),
       method: "POST",

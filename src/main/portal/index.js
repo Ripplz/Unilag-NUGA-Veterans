@@ -10,9 +10,7 @@ const Portal = () => {
   const [filterQuery, setFilterQuery] = useState("");
 
   useEffect(() => {
-      let fetchUrl = "https://unilag-nuga-veterans-server.now.sh/get_veterans"
-    // let fetchUrl = "http://localhost:3005/get_veterans";
-
+    let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/get_veterans`;
     var submitToastId = toast.info("Loading Veterans...", { autoClose: false });
     fetch(fetchUrl, { method: "GET" })
       .then(response => response.json())
@@ -39,7 +37,12 @@ const Portal = () => {
     <div id="wrapper_portal">
       <div id="wrapper_portal_filter">
         <form id="form_portal_filter_query" onSubmit={filterPortalList}>
-          <input id="input_portal_filter" type="text" name="filterQuery" placeholder="Enter NUGA Year..." />
+          <input
+            id="input_portal_filter"
+            type="text"
+            name="filterQuery"
+            placeholder="Enter NUGA Year..."
+          />
           <button id="btn_portal_filter">Filter</button>
         </form>
       </div>

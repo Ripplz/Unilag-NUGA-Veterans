@@ -27,5 +27,10 @@
       "headers": { "cache-control": "s-maxage=0" },
       "dest": "/index.html"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "REACT_APP_SERVER_URL": "@server_url"
+    }
+  }
 }
