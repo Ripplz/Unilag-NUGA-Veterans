@@ -52,22 +52,20 @@ const Navbar = props => {
           id="nav_item_search"
           onClick={toggleSearch}
         />
-        <div
-          id={`wrapper_nav_veteran_search${
-            isSearchBarVisible ? "" : "_hidden"
-          }`}
-        >
-          <form id="form_veteran_search" onSubmit={performVeteranSearch}>
-            <input
-              id="input_veteran_search"
-              type="number"
-              name="searchQuery"
-              placeholder="Search by NUGA Year..."
-              required
-            />
-            <button id="btn_veteran_search">Search</button>
-          </form>
-        </div>
+      </div>
+      <div
+        id={`wrapper_nav_veteran_search${isSearchBarVisible ? "" : "_hidden"}`}
+      >
+        <form id="form_veteran_search" onSubmit={performVeteranSearch}>
+          <input
+            id="input_veteran_search"
+            type="number"
+            name="searchQuery"
+            placeholder="Search by NUGA Year..."
+            required
+          />
+          <button id="btn_veteran_search">Search</button>
+        </form>
       </div>
     </div>
   );
