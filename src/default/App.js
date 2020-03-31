@@ -33,7 +33,7 @@ function App() {
             path="/edit-profile"
             render={props => <ProfileForm {...props} isEditMode={true} />}
           />
-          <Route exact path="/portal" component={Portal} />
+          <Route exact path="/veteran_search" component={Portal} />
           <Route
             exact
             path="/account"
