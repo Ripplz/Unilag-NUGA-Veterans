@@ -16,6 +16,7 @@ const RegistrationPage = props => {
   const [nugaYears, setNugaYears] = useState("");
   const [jerseyPositions, setJerseyPositions] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordHint, setPasswordHint] = useState("");
   const [recentPhoto, setRecentPhoto] = useState(null);
   const [throwbackPhotos, setThrowbackPhotos] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -39,6 +40,7 @@ const RegistrationPage = props => {
         setNugaYears(data.nugaYears);
         setJerseyPositions(data.jerseyPositions);
         setPassword(data.password);
+        setPasswordHint(data.passwordHint);
         setRecentPhoto(data.recentPhoto);
         setThrowbackPhotos(data.throwbackPhotos);
         document.getElementById("img_recent_photo").src = data.recentPhoto;
@@ -53,6 +55,7 @@ const RegistrationPage = props => {
       initProfile.otherNames === otherNames &&
       initProfile.email === email &&
       initProfile.password === password &&
+      initProfile.passwordHint === passwordHint &&
       initProfile.phone === phone &&
       initProfile.nugaYears === nugaYears &&
       initProfile.jerseyPositions === jerseyPositions &&
@@ -93,6 +96,7 @@ const RegistrationPage = props => {
             nugaYears: nugaYearsFormatted,
             jerseyPositions,
             password,
+            passwordHint,
             recentPhoto,
             throwbackPhotos
           };
@@ -137,6 +141,7 @@ const RegistrationPage = props => {
         nugaYears: nugaYearsFormatted,
         jerseyPositions,
         password,
+        passwordHint,
         recentPhoto,
         throwbackPhotos
       };
@@ -176,6 +181,7 @@ const RegistrationPage = props => {
     setNugaYears("");
     setJerseyPositions("");
     setPassword("");
+    setPasswordHint("");
     setRecentPhoto(null);
     setThrowbackPhotos([]);
   };
@@ -361,16 +367,29 @@ const RegistrationPage = props => {
                 />
               </div>
             </div>
-            <div className="form_field">
-              <div className="form_field_title">Password</div>
-              <input
-                className="input__form_field"
-                type="password"
-                name="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-                required
-              />
+            <div className="form_group_half">
+              <div className="form_field_half">
+                <div className="form_field_title">Password</div>
+                <input
+                  className="input__form_field"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={event => setPassword(event.target.value)}
+                  required
+                />
+              </div>
+              <div className="form_field_half">
+                <div className="form_field_title">Password Hint</div>
+                <input
+                  className="input__form_field"
+                  type="text"
+                  name="passwordHint"
+                  value={passwordHint}
+                  onChange={event => setPasswordHint(event.target.value)}
+                  required
+                />
+              </div>
             </div>
           </div>
 
