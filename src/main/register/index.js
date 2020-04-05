@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
-const ProfileForm = props => {
+const RegistrationPage = props => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [lastName, setLastName] = useState("");
@@ -430,4 +430,4 @@ const ProfileForm = props => {
   );
 };
 
-export default ProfileForm;
+export default RegistrationPage;
