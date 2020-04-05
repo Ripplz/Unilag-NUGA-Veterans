@@ -13,7 +13,7 @@ const Navbar = props => {
     swal({
       title: "About this app",
       text:
-        "This app was created to collate and manage information about veteran players in Unilag's NUGA Basketball team.\n\n\nConceptual Design: Dr. Daniel Ayo (danielayo@gmail.com)\n\nSoftware Development: Stephen Ojo (ojostephendev@gmail.com)",
+        "This app was created to collate and manage information about veteran players in Unilag's NUGA Basketball team.\n\n\nConceptual Design: Dr. Daniel Ayo (danielayo@hotmail.com)\n\nSoftware Development: Stephen Ojo (ojostephendev@gmail.com)",
       icon: "info",
       button: "OK"
     });
