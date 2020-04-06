@@ -39,8 +39,8 @@ function App() {
             path="/login"
             render={props => <Account {...props} isUser={true} />}
           />
-          <Route exact path="/feedback" component={Feedback} />
-          <Route exact path="/contact" component={Contact} />
+          {/* <Route exact path="/feedback" component={Feedback} /> */}
+          <Route exact path="/feedback" component={Contact} />
           <Route
             exact
             path="/portal/veteran"

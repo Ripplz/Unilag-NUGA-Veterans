@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
 const Navbar = props => {
-  const navRoutes = ["Home", "Register", "Login", "Feedback", "Contact"];
+  const navRoutes = ["Home", "Register", "Login", "Feedback"];
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const history = useHistory();
 
@@ -47,25 +47,18 @@ const Navbar = props => {
         <div className="wrapper_nav_item" onClick={showInfo}>
           About
         </div>
-        <div
-          className="wrapper_nav_item"
-          id="nav_item_search"
-          onClick={toggleSearch}
-        />
-      </div>
-      <div
-        id={`wrapper_nav_veteran_search${isSearchBarVisible ? "" : "_hidden"}`}
-      >
-        <form id="form_veteran_search" onSubmit={performVeteranSearch}>
-          <input
-            id="input_veteran_search"
-            type="number"
-            name="searchQuery"
-            placeholder="Search by NUGA Year..."
-            required
-          />
-          <button id="btn_veteran_search">Search</button>
-        </form>
+        <div id="wrapper_nav_veteran_search">
+          <form id="form_veteran_search" onSubmit={performVeteranSearch}>
+            <input
+              id="input_veteran_search"
+              type="number"
+              name="searchQuery"
+              placeholder="Enter Year (e.g. 2020)"
+              required
+            />
+            <button id="btn_veteran_search">Search</button>
+          </form>
+        </div>
       </div>
     </div>
   );
