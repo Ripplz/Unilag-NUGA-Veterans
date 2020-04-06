@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/veteran_search" component={Portal} />
           <Route
             exact
-            path="/account"
+            path="/login"
             render={props => <Account {...props} isUser={true} />}
           />
           <Route exact path="/feedback" component={Feedback} />

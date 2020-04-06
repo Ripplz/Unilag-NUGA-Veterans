@@ -24,13 +24,13 @@ const Portal = props => {
           if (data) setVeterans(data);
           else {
             toast.warn(
-              `No veteran with the Nuga Year "${searchQuery} was found.`
+              `No veteran with the Nuga Year "${searchQuery}" was found.`
             );
             history.push("/");
           }
           if (data.length <= 0) {
             toast.warn(
-              `No veteran with the Nuga Year "${searchQuery} was found.`
+              `No veteran with the Nuga Year "${searchQuery}" was found.`
             );
             history.push("/");
           }

@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
 const Navbar = props => {
-  const navRoutes = ["Home", "Register", "Account", "Feedback", "Contact"];
+  const navRoutes = ["Home", "Register", "Login", "Feedback", "Contact"];
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const history = useHistory();
 
