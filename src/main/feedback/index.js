@@ -7,6 +7,7 @@ const Feedback = props => {
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
   const [userId, setUserId] = useState(null);
   const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [passwordHint, setPasswordHint] = useState("");
 
   useEffect(() => {
     const userId = sessionStorage.getItem("userId");
@@ -26,19 +27,38 @@ const Feedback = props => {
       .value;
     let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/get_veteran_id?email=${email}&password=${password}`;
     fetch(fetchUrl, { method: "GET" })
-      .then(response => response.json())
-      .then(vetData => {
-        console.log(vetData);
-        if (vetData && vetData[0]) {
-          const data = vetData[0];
-          sessionStorage.setItem("userId", data._id);
-          setUserId(data._id);
-        } else toast.warn("Could not login. Please try again.");
+      .then(response => {
+        switch (response.status) {
+          case 200:
+            return response.json();
+          case 206:
+            return response.text();
+          case 204:
+            toast.error("No account found with this email address");
+            setPasswordHint("");
+            break;
+        }
+      })
+      .then(resolvedData => {
+        console.log(resolvedData);
+        if (typeof resolvedData === "string") {
+          // this is a password hint returned
+          toast.error("Incorrect password. Please try again");
+          setPasswordHint(resolvedData);
+        } else if (typeof resolvedData === "object") {
+          setPasswordHint("");
+          if (resolvedData && resolvedData[0]) {
+            const data = resolvedData[0];
+            sessionStorage.setItem("userId", data._id);
+            setUserId(data._id);
+          } else toast.warn("Could not login. Please try again");
+        }
         setIsLoginButtonDisabled(false);
       })
       .catch(err => {
         console.error(err);
         toast.error("An error occured. Please try again.");
+        setPasswordHint("");
         setIsLoginButtonDisabled(false);
       })
       .finally(() => toast.dismiss(loginToastId));
@@ -91,6 +111,9 @@ const Feedback = props => {
           name="password"
           required
         />
+        <div id={`wrapper_password_hint${passwordHint ? "" : "_disabled"}`}>
+          Password Hint: {passwordHint}
+        </div>
         <button id="btn_feedback_login_submit" disabled={isLoginButtonDisabled}>
           Login
         </button>

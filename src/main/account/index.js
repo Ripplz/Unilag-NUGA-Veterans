@@ -16,6 +16,7 @@ const Account = props => {
     "Data not found. Please reload"
   );
   const [shouldLoginConfirmed, setShouldLoginConfirmed] = useState(false);
+  const [passwordHint, setPasswordHint] = useState("");
 
   const history = useHistory();
 
@@ -81,21 +82,40 @@ const Account = props => {
       .value;
     let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/get_veteran?email=${email}&password=${password}`;
     fetch(fetchUrl, { method: "GET" })
-      .then(response => response.json())
-      .then(vetData => {
-        console.log(vetData);
-        if (vetData && vetData[0]) {
-          const data = vetData[0];
-          sessionStorage.setItem("userId", data._id);
-          sessionStorage.setItem(data._id, JSON.stringify(data));
-          resolveGalleryTbPhotos(data);
-          setValidVet(data);
-        } else toast.warn("Could not login. Please try again.");
+      .then(response => {
+        switch (response.status) {
+          case 200:
+            return response.json();
+          case 206:
+            return response.text();
+          case 204:
+            toast.error("No account found with this email address");
+            setPasswordHint("");
+            break;
+        }
+      })
+      .then(resolvedData => {
+        console.log(resolvedData);
+        if (typeof resolvedData === "string") {
+          // this is a password hint returned
+          toast.error("Incorrect password. Please try again");
+          setPasswordHint(resolvedData);
+        } else if (typeof resolvedData === "object") {
+          setPasswordHint("");
+          if (resolvedData && resolvedData[0]) {
+            const data = resolvedData[0];
+            sessionStorage.setItem("userId", data._id);
+            sessionStorage.setItem(data._id, JSON.stringify(data));
+            resolveGalleryTbPhotos(data);
+            setValidVet(data);
+          } else toast.warn("Could not login. Please try again");
+        }
         setIsLoginButtonDisabled(false);
       })
       .catch(err => {
         console.error(err);
         toast.error("An error occured. Please try again.");
+        setPasswordHint("");
         setIsLoginButtonDisabled(false);
       })
       .finally(() => toast.dismiss(loginToastId));
@@ -239,6 +259,9 @@ const Account = props => {
           placeholder="Enter your password..."
           required
         />
+        <div id={`wrapper_password_hint${passwordHint ? "" : "_disabled"}`}>
+          Password Hint: {passwordHint}
+        </div>
         <button id="btn_profile_login_submit" disabled={isLoginButtonDisabled}>
           Login
         </button>

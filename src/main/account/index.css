@@ -33,6 +33,15 @@
   top: 16px;
 }
 
+#wrapper_password_hint {
+  color: white;
+  align-self: flex-start;
+}
+
+#wrapper_password_hint_disabled {
+  display: none;
+}
+
 .btn_profile_action {
   border-radius: 2px;
   text-align: center;
