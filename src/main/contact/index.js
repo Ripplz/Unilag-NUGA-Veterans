@@ -19,7 +19,8 @@ const Contact = () => {
       message: contactMessage,
       name,
       email,
-      phone
+      phone,
+      timestamp: Date.now()
     };
     console.log(newContactMessage);
     let fetchUrl = `${process.env.REACT_APP_SERVER_URL}/submit_contact_message`;

@@ -12,6 +12,7 @@ import Feedback from "../main/feedback";
 import Footer from "../main/Footer/footer";
 import Contact from "../main/contact";
 import RegistrationPage from "../main/register";
+import AdminFeedback from "../main/admin/feedback";
 
 function App() {
   const [currentNav, setCurrentNav] = useState(0);
@@ -36,11 +37,12 @@ function App() {
           <Route exact path="/veteran_search" component={Portal} />
           <Route
             exact
-            path="/login"
+            path="/account"
             render={props => <Account {...props} isUser={true} />}
           />
           {/* <Route exact path="/feedback" component={Feedback} /> */}
           <Route exact path="/feedback" component={Contact} />
+          <Route exact path="/admin/feedback" component={AdminFeedback} />
           <Route
             exact
             path="/portal/veteran"

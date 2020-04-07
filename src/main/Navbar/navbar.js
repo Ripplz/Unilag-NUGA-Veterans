@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 
 const Navbar = props => {
-  const navRoutes = ["Home", "Register", "Login", "Feedback"];
+  const navRoutes = ["Home", "Register", "My Account", "Feedback"];
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const history = useHistory();
 
@@ -35,7 +35,7 @@ const Navbar = props => {
       <div id="wrapper_nav_items">
         {navRoutes.map((navItem, key) => (
           <Link
-            to={`${key == 0 ? "/" : "/" + navItem.toLowerCase()}`}
+            to={`${key === 0 ? "/" : key === 2 ? "/account" : "/" + navItem.toLowerCase()}`}
             className="wrapper_nav_item"
             id={`${props.activeNav == key ? "nav_item_selected" : ""}`}
             onClick={() => props.onNavSelected(key)}
