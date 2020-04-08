@@ -29,8 +29,8 @@ const Navbar = props => {
 
   return (
     <div id="wrapper_navbar">
-      <Link to="/">
-        <div id="navbar_logo" />
+      <Link to="/" style={{"text-decoration": "none"}}>
+        <div id="navbar_logo">UNILAG NUGA<br />BASKETBALL VETERANS</div>
       </Link>
       <div id="wrapper_nav_items">
         {navRoutes.map((navItem, key) => (
